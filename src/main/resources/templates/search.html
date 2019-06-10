@@ -36,7 +36,23 @@
 
     <hr />
 
+    <!-- why the hell doesn't this work? -->
+    <!--<h3 th:text="${jobs.size()}"></h3> -->
+
+    <!-- but this works?  why? -->
+    <!-- <table th:each="job : ${jobs}">
+      <h3 th:text="${jobs.size()}"></h3>
+    </table> -->
+
+    <h3 th:text="${jobssize}"></h3>
+
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
+    <table th:fragment="lazy" th:each="job : ${jobs}" class="job-listing">
+      <tr th:each="key : ${job.keySet()}" >
+        <td th:text="${#strings.capitalizeWords(key)}"></td>
+        <td th:text="${job.get(key)}" ></td>
+      </tr>
+    </table>
 
 </div>
 
